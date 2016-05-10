@@ -45,11 +45,10 @@ public class Student {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO students(name, date, is_completed) VALUES (:name, :date, :is_completed);";
+      String sql = "INSERT INTO students(name, date, is_completed) VALUES (:name, :date);";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
         .addParameter("date", this.date)
-        .addParameter("is_completed", this.getIsCompleted())
         .executeUpdate()
         .getKey();
     }
@@ -97,7 +96,7 @@ public class Student {
     }
   }
 
-  public void update(String newName) {
+  public void update(String newName, String newDate) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE students SET name = :newName, date = :newDate WHERE id = :id";
       con.createQuery(sql)

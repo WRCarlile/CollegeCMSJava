@@ -86,7 +86,7 @@ public class Course {
     }
   }
 
-  public void update(String newCourseName) {
+  public void update(String newCourseName, String newCourseNumber) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE courses SET course_name = :newCourseName, course_number = :newCourseNumber WHERE id = :id;";
       con.createQuery(sql)
