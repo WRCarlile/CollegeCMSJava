@@ -39,7 +39,7 @@ public class CourseTest {
     Course secondCourse = new Course("Biology", "BIO 101");
     assertTrue(firstCourse.equals(secondCourse));
   }
-  //
+
   @Test
   public void save_savesObjectIntoDatabase_true() {
     Course myCourse = new Course("Biology", "BIO 101");
@@ -54,7 +54,7 @@ public class CourseTest {
     Course savedCourse = Course.all().get(0);
     assertEquals(myCourse.getId(), savedCourse.getId());
   }
-  //
+
   @Test
   public void find_findsCourseInDatabase_true() {
     Course myCourse = new Course("Biology", "BIO 101");
@@ -121,5 +121,13 @@ public class CourseTest {
     assertEquals(0, myStudent.getCourses().size());
   }
 
+  @Test
+  public void complete_isCompleted_false() {
+    Course myCourse = new Course("Biology", "BIO 101");
+    myCourse.save();
+
+    myCourse.complete();
+    assertEquals(true, Course.find(myCourse.getId()).getIsCompleted());
+  }
 
 }

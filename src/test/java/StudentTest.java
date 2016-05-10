@@ -21,16 +21,18 @@ public class StudentTest {
     Student myStudent = new Student("Bob Smith", "1/01/2016");
     assertEquals("Bob Smith", myStudent.getName());
   }
+
   @Test
   public void getDate_studentInstantiatesWithDate_String() {
     Student myStudent = new Student("Bob Smith", "1/01/2016");
     assertEquals("1/01/2016", myStudent.getDate());
   }
+
   @Test
   public void all_emptyAtFirst_0() {
     assertEquals(0, Student.all().size());
   }
-  //
+
   @Test
   public void equals_returnsTrueIfNamesAretheSame_true() {
     Student firstStudent = new Student("Bob Smith", "1/01/2016");
@@ -60,6 +62,7 @@ public class StudentTest {
     Student savedStudent = Student.find(myStudent.getId());
     assertTrue(myStudent.equals(savedStudent));
   }
+
   @Test
   public void addCourse_addsCourseToStudent_true() {
     Student myStudent = new Student("Bob Smith", "1/01/2016");
@@ -92,5 +95,4 @@ public class StudentTest {
     myStudent.delete();
     assertEquals(0, myCourse.getStudents().size());
   }
-
 }
