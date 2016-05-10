@@ -64,23 +64,23 @@ ALTER SEQUENCE students_id_seq OWNED BY students.id;
 
 
 --
--- Name: students_courses; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
+-- Name: students_courses_departments; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
 --
 
-CREATE TABLE students_courses (
+CREATE TABLE students_courses_departments (
     id integer NOT NULL,
     student_id integer,
     course_id integer
 );
 
 
-ALTER TABLE students_courses OWNER TO "Guest";
+ALTER TABLE students_courses_departments OWNER TO "Guest";
 
 --
--- Name: students_courses_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
+-- Name: students_courses_departments_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
 --
 
-CREATE SEQUENCE students_courses_id_seq
+CREATE SEQUENCE students_courses_departments_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -88,13 +88,13 @@ CREATE SEQUENCE students_courses_id_seq
     CACHE 1;
 
 
-ALTER TABLE students_courses_id_seq OWNER TO "Guest";
+ALTER TABLE students_courses_departments_id_seq OWNER TO "Guest";
 
 --
--- Name: students_courses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
+-- Name: students_courses_departments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
 --
 
-ALTER SEQUENCE students_courses_id_seq OWNED BY students_courses.id;
+ALTER SEQUENCE students_courses_departments_id_seq OWNED BY students_courses_departments.id;
 
 
 --
@@ -142,7 +142,7 @@ ALTER TABLE ONLY students ALTER COLUMN id SET DEFAULT nextval('students_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
 --
 
-ALTER TABLE ONLY students_courses ALTER COLUMN id SET DEFAULT nextval('students_courses_id_seq'::regclass);
+ALTER TABLE ONLY students_courses_departments ALTER COLUMN id SET DEFAULT nextval('students_courses_departments_id_seq'::regclass);
 
 
 --
@@ -168,18 +168,18 @@ SELECT pg_catalog.setval('students_id_seq', 9, true);
 
 
 --
--- Data for Name: students_courses; Type: TABLE DATA; Schema: public; Owner: Guest
+-- Data for Name: students_courses_departments; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY students_courses (id, student_id, course_id) FROM stdin;
+COPY students_courses_departments (id, student_id, course_id) FROM stdin;
 \.
 
 
 --
--- Name: students_courses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
+-- Name: students_courses_departments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('students_courses_id_seq', 2, true);
+SELECT pg_catalog.setval('students_courses_departments_id_seq', 2, true);
 
 
 --
@@ -206,11 +206,11 @@ ALTER TABLE ONLY students
 
 
 --
--- Name: students_courses_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
+-- Name: students_courses_departments_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
 --
 
-ALTER TABLE ONLY students_courses
-    ADD CONSTRAINT students_courses_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY students_courses_departments
+    ADD CONSTRAINT students_courses_departments_pkey PRIMARY KEY (id);
 
 
 --

@@ -69,7 +69,9 @@ public class StudentTest {
     myStudent.save();
     Course myCourse = new Course("Biology", "BIO 101");
     myCourse.save();
-    myStudent.addCourse(myCourse);
+    Department myDepartment = new Department("Sciences");
+    myDepartment.save();
+    myStudent.addCourse(myCourse, myDepartment);
     Course savedCourse = myStudent.getCourses().get(0);
     assertTrue(myCourse.equals(savedCourse));
   }
@@ -80,7 +82,9 @@ public class StudentTest {
     myStudent.save();
     Course myCourse = new Course("Biology", "BIO 101");
     myCourse.save();
-    myStudent.addCourse(myCourse);
+    Department myDepartment = new Department("Sciences");
+    myDepartment.save();
+    myStudent.addCourse(myCourse, myDepartment);
     List savedCourses = myStudent.getCourses();
     assertEquals(1, savedCourses.size());
   }
@@ -91,7 +95,9 @@ public class StudentTest {
     myStudent.save();
     Course myCourse = new Course("Biology", "BIO 101");
     myCourse.save();
-    myStudent.addCourse(myCourse);
+    Department myDepartment = new Department("Sciences");
+    myDepartment.save();
+    myStudent.addCourse(myCourse, myDepartment);
     myStudent.delete();
     assertEquals(0, myCourse.getStudents().size());
   }

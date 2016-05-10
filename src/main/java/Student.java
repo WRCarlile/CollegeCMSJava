@@ -64,27 +64,34 @@ public class Student {
     }
   }
 
-  public void addCourse(Course course) {
+  public void addCourse(Course course, Department department) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO students_courses (student_id, course_id) VALUES (:student_id, :course_id);";
+      String sql = "INSERT INTO students_courses_departments (student_id, course_id, department_id) VALUES (:student_id, :course_id, :department_id);";
       con.createQuery(sql)
         .addParameter("student_id", this.getId())
         .addParameter("course_id", course.getId())
+        .addParameter("department_id", department.getId())
         .executeUpdate();
     }
   }
-
+  public void addDepartment(Department department, Course course) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO students_courses_departments (student_id, course_id, department_id) VALUES (:student_id, :course_id, :department_id);";
+      con.createQuery(sql)
+        .addParameter("student_id", this.getId())
+        .addParameter("course_id", course.getId())
+        .addParameter("department_id", department.getId())
+        .executeUpdate();
+    }
+  }
   //get courses with this student id
   public List<Course> getCourses() {
     try(Connection con = DB.sql2o.open()){
-      String joinQuery = "SELECT course_id FROM students_courses WHERE student_id = :student_id;";
+      String joinQuery = "SELECT course_id FROM students_courses_departments WHERE student_id = :student_id;";
       List<Integer> courseIds = con.createQuery(joinQuery)
         .addParameter("student_id", this.getId())
         .executeAndFetch(Integer.class);
-
-
       List<Course> courses = new ArrayList<Course>();
-
       for (Integer courseId : courseIds) {
         String courseQuery = "SELECT * FROM courses WHERE id = :courseId;";
         Course course = con.createQuery(courseQuery)
@@ -93,6 +100,24 @@ public class Student {
         courses.add(course);
       }
       return courses;
+    }
+  }
+
+  public List<Department> getDepartments() {
+    try(Connection con = DB.sql2o.open()){
+      String joinQuery = "SELECT department_id FROM students_courses_departments WHERE student_id = :student_id;";
+      List<Integer> departmentIds = con.createQuery(joinQuery)
+        .addParameter("student_id", this.getId())
+        .executeAndFetch(Integer.class);
+      List<Department> departments = new ArrayList<Department>();
+      for (Integer departmentId : departmentIds) {
+        String departmentQuery = "SELECT * FROM departments WHERE id = :departmentId;";
+        Department department = con.createQuery(departmentQuery)
+          .addParameter("departmentId", departmentId)
+          .executeAndFetchFirst(Department.class);
+        departments.add(department);
+      }
+      return departments;
     }
   }
 
@@ -114,7 +139,7 @@ public class Student {
           .addParameter("id", this.getId())
           .executeUpdate();
 
-      String joinDeleteQuery = "DELETE FROM students_courses WHERE student_id = :studentId";
+      String joinDeleteQuery = "DELETE FROM students_courses_departments WHERE student_id = :studentId";
         con.createQuery(joinDeleteQuery)
           .addParameter("studentId", this.getId())
           .executeUpdate();
