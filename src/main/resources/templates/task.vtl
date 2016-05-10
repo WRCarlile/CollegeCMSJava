@@ -1,4 +1,4 @@
-<h1>$course.getCourseName()</h1>
+<h1>$course.getCourseTitle()</h1>
 <h2>$course.getIsCompleted()</h2>
 
 #if($course.getStudents())
@@ -26,8 +26,8 @@
 <p>Edit course:</p>
 
 <form action="/courses/$course.getId()/edit" method="post">
-  <label for="course_name">CourseName</label>
-  <input id="course_name" name="course_name" type="text">
+  <label for="course_title">CourseTitle</label>
+  <input id="course_title" name="course_title" type="text">
   <button type="submit" class="btn btn-info" id="update-course">Update Course</button>
 </form>
 

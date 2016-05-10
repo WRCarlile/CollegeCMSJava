@@ -31,66 +31,66 @@ public class StudentTest {
     assertEquals(0, Student.all().size());
   }
   //
-  // @Test
-  // public void equals_returnsTrueIfNamesAretheSame_true() {
-  //   Student firstStudent = new Student("Bob Smith");
-  //   Student secondStudent = new Student("Bob Smith");
-  //   assertTrue(firstStudent.equals(secondStudent));
-  // }
-  //
-  // @Test
-  // public void save_savesObjectIntoDatabase_true() {
-  //   Student myStudent = new Student("Bob Smith");
-  //   myStudent.save();
-  //   assertTrue(Student.all().get(0).equals(myStudent));
-  // }
-  //
-  // @Test
-  // public void save_assignsIdToObject_int() {
-  //   Student myStudent = new Student("Bob Smith");
-  //   myStudent.save();
-  //   Student savedStudent = Student.all().get(0);
-  //   assertEquals(myStudent.getId(), savedStudent.getId());
-  // }
-  //
-  // @Test
-  // public void find_findStudentInDatabase_true() {
-  //   Student myStudent = new Student("Bob Smith");
-  //   myStudent.save();
-  //   Student savedStudent = Student.find(myStudent.getId());
-  //   assertTrue(myStudent.equals(savedStudent));
-  // }
-  // @Test
-  // public void addCourse_addsCourseToStudent_true() {
-  //   Student myStudent = new Student("Bob Smith");
-  //   myStudent.save();
-  //   Course myCourse = new Course("Mow the lawn");
-  //   myCourse.save();
-  //   myStudent.addCourse(myCourse);
-  //   Course savedCourse = myStudent.getCourses().get(0);
-  //   assertTrue(myCourse.equals(savedCourse));
-  // }
-  //
-  // @Test
-  // public void getCourses_returnsAllCourses_List() {
-  //   Student myStudent = new Student("Bob Smith");
-  //   myStudent.save();
-  //   Course myCourse = new Course("Mow the lawn");
-  //   myCourse.save();
-  //   myStudent.addCourse(myCourse);
-  //   List savedCourses = myStudent.getCourses();
-  //   assertEquals(1, savedCourses.size());
-  // }
-  //
-  // @Test
-  // public void delete_deletesAllCoursesAndStudentsAssociations() {
-  //   Student myStudent = new Student("Bob Smith");
-  //   myStudent.save();
-  //   Course myCourse = new Course("Mow the lawn");
-  //   myCourse.save();
-  //   myStudent.addCourse(myCourse);
-  //   myStudent.delete();
-  //   assertEquals(0, myCourse.getStudents().size());
-  // }
+  @Test
+  public void equals_returnsTrueIfNamesAretheSame_true() {
+    Student firstStudent = new Student("Bob Smith", "1/01/2016");
+    Student secondStudent = new Student("Bob Smith", "1/01/2016");
+    assertTrue(firstStudent.equals(secondStudent));
+  }
+
+  @Test
+  public void save_savesObjectIntoDatabase_true() {
+    Student myStudent = new Student("Bob Smith", "1/01/2016");
+    myStudent.save();
+    assertTrue(Student.all().get(0).equals(myStudent));
+  }
+
+  @Test
+  public void save_assignsIdToObject_int() {
+    Student myStudent = new Student("Bob Smith", "1/01/2016");
+    myStudent.save();
+    Student savedStudent = Student.all().get(0);
+    assertEquals(myStudent.getId(), savedStudent.getId());
+  }
+
+  @Test
+  public void find_findStudentInDatabase_true() {
+    Student myStudent = new Student("Bob Smith", "1/01/2016");
+    myStudent.save();
+    Student savedStudent = Student.find(myStudent.getId());
+    assertTrue(myStudent.equals(savedStudent));
+  }
+  @Test
+  public void addCourse_addsCourseToStudent_true() {
+    Student myStudent = new Student("Bob Smith", "1/01/2016");
+    myStudent.save();
+    Course myCourse = new Course("Biology", "BIO 101");
+    myCourse.save();
+    myStudent.addCourse(myCourse);
+    Course savedCourse = myStudent.getCourses().get(0);
+    assertTrue(myCourse.equals(savedCourse));
+  }
+
+  @Test
+  public void getCourses_returnsAllCourses_List() {
+    Student myStudent = new Student("Bob Smith", "1/01/2016");
+    myStudent.save();
+    Course myCourse = new Course("Biology", "BIO 101");
+    myCourse.save();
+    myStudent.addCourse(myCourse);
+    List savedCourses = myStudent.getCourses();
+    assertEquals(1, savedCourses.size());
+  }
+
+  @Test
+  public void delete_deletesAllCoursesAndStudentsAssociations() {
+    Student myStudent = new Student("Bob Smith", "1/01/2016");
+    myStudent.save();
+    Course myCourse = new Course("Biology", "BIO 101");
+    myCourse.save();
+    myStudent.addCourse(myCourse);
+    myStudent.delete();
+    assertEquals(0, myCourse.getStudents().size());
+  }
 
 }

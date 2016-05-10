@@ -5,7 +5,7 @@
   <p>Here are the courses for this student:</p>
   <ul>
     #foreach($course in $student.getCourses())
-      <li>$course.getCourseName()</li>
+      <li>$course.getCourseTitle()</li>
     #end
   </ul>
 #end
@@ -17,7 +17,7 @@
   <label for="course_id">Select a course</label>
   <select id='course_id' name='course_id' type='text'>
     #foreach($course in $allCourses)
-      <option value="$course.getId()"> $course.getCourseName() </option>
+      <option value="$course.getId()"> $course.getCourseTitle() </option>
     #end
   </select>
   <button type="submit" class="btn btn-info">Add course to this student</button>

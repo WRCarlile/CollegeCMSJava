@@ -45,7 +45,7 @@ public class Student {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO students(name, date, is_completed) VALUES (:name, :date);";
+      String sql = "INSERT INTO students(name, date) VALUES (:name, :date);";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
         .addParameter("date", this.date)

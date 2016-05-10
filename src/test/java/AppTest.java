@@ -42,7 +42,7 @@
 //   public void courseIsCreatedTest() {
 //     goTo("http://localhost:4567/");
 //     click("a", withText("Courses"));
-//     fill("#course_name").with("Mow the lawn");
+//     fill("#course_title").with("Mow the lawn");
 //     submit(".btn");
 //     assertThat(pageSource()).contains("Mow the lawn");
 //   }
@@ -57,7 +57,7 @@
 //   }
 //
 //   @Test
-//   public void courseShowPageDisplaysCourseName() {
+//   public void courseShowPageDisplaysCourseTitle() {
 //     Course testCourse = new Course("Mow the lawn");
 //     testCourse.save();
 //     String url = String.format("http://localhost:4567/courses/%d", testCourse.getId());

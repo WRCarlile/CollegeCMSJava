@@ -1,7 +1,7 @@
 # ToDoListDataBase
 practice in java
 
-## CourseName
+## CourseTitle
 
 practice in java, gradle, velocity, and sparkJava
 

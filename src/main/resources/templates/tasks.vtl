@@ -2,15 +2,15 @@
 
 <ul>
   #foreach ($course in $courses)
-    <li><a href="/courses/$course.getId()">$course.getCourseName()</a></li>
+    <li><a href="/courses/$course.getId()">$course.getCourseTitle()</a></li>
   #end
 </ul>
 
 <p>Add a new course:</p>
 
 <form action="/courses" method="post">
-  <label for="course_name">Course course_name</label>
-  <input id="course_name" name="course_name" type="text">
+  <label for="course_title">Course course_title</label>
+  <input id="course_title" name="course_title" type="text">
   <button type="submit" class="btn btn-success">Add Course</button>
 </form>
 

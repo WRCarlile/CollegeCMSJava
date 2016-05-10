@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class Course {
   private int id;
-  private String course_name;
+  private String course_title;
   private String course_number;
   private boolean is_completed;
 
 
-  public Course(String course_name, String course_number) {
-    this.course_name = course_name;
+  public Course(String course_title, String course_number) {
+    this.course_title = course_title;
     this.course_number = course_number;
   }
 
-  public String getCourseName() {
-    return course_name;
+  public String getCourseTitle() {
+    return course_title;
   }
 
   public String getCourseNumber() {
@@ -47,7 +47,7 @@ public class Course {
   }
 
   public static List<Course> all() {
-    String sql = "SELECT id, course_name, course_number FROM courses;";
+    String sql = "SELECT id, course_title, course_number FROM courses;";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Course.class);
     }
@@ -59,18 +59,18 @@ public class Course {
       return false;
     } else {
       Course newCourse = (Course) otherCourse;
-      return this.getCourseName().equals(newCourse.getCourseName()) &&
+      return this.getCourseTitle().equals(newCourse.getCourseTitle()) &&
              this.getId() == newCourse.getId();
     }
   }
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO courses(course_name, course_number, is_completed) VALUES (:course_name, :course_number; :is_completed);";
+      String sql = "INSERT INTO courses(course_title, course_number) VALUES (:course_title, :course_number);";
       this.id = (int) con.createQuery(sql, true)
-        .addParameter("course_name", this.course_name)
+        .addParameter("course_title", this.course_title)
         .addParameter("course_number", this.course_number)
-        .addParameter("is_completed", this.is_completed)
+
         .executeUpdate()
         .getKey();
     }
@@ -86,11 +86,11 @@ public class Course {
     }
   }
 
-  public void update(String newCourseName, String newCourseNumber) {
+  public void update(String newCourseTitle, String newCourseNumber) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE courses SET course_name = :newCourseName, course_number = :newCourseNumber WHERE id = :id;";
+      String sql = "UPDATE courses SET course_title = :newCourseTitle, course_number = :newCourseNumber WHERE id = :id;";
       con.createQuery(sql)
-        .addParameter("newCourseName", newCourseName)
+        .addParameter("newCourseTitle", newCourseTitle)
         .addParameter("newCourseNumber", newCourseNumber)
         .addParameter("id", this.id)
         .executeUpdate();

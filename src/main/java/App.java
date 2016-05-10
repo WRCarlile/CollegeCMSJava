@@ -30,8 +30,8 @@ public class App {
     //
     // post("/courses", (request, response) -> {
     //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   String course_name = request.queryParams("course_name");
-    //   Course newCourse = new Course(course_name);
+    //   String course_title = request.queryParams("course_title");
+    //   Course newCourse = new Course(course_title);
     //   newCourse.save();
     //   response.redirect("/courses");
     //   return null;
@@ -86,9 +86,9 @@ public class App {
     // post("/courses/:id/edit", (request, response) -> {
     //   HashMap<String, Object> model = new HashMap<String, Object>();
     //   Course course = Course.find(Integer.parseInt(request.params("id")));
-    //   String course_name = request.queryParams("course_name");
+    //   String course_title = request.queryParams("course_title");
     //   // Student student = Student.find(course.getStudentId());
-    //   course.update(course_name);
+    //   course.update(course_title);
     //   String url = String.format("/courses/%d", course.getId());
     //   response.redirect(url);
     //   return new ModelAndView(model, layout);

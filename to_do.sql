@@ -103,7 +103,7 @@ ALTER SEQUENCE students_courses_id_seq OWNED BY students_courses.id;
 
 CREATE TABLE courses (
     id integer NOT NULL,
-    course_name character varying,
+    course_title character varying,
     is_completed boolean
 );
 
@@ -186,7 +186,7 @@ SELECT pg_catalog.setval('students_courses_id_seq', 2, true);
 -- Data for Name: courses; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY courses (id, course_name, is_completed) FROM stdin;
+COPY courses (id, course_title, is_completed) FROM stdin;
 \.
 
 
