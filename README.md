@@ -1,4 +1,4 @@
-# ToDoListDataBase
+# College CMS
 practice in java
 
 ## CourseTitle
@@ -37,4 +37,4 @@ _To contact, leave a comment on Github._
 
 *MIT License*
 
-Copyright (c) 2016 **_Ryan Carlile_**
+Copyright (c) 2016 **_Nick Lyman and Ryan Carlile_**
