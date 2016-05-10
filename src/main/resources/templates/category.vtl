@@ -1,0 +1,40 @@
+<h1>$student.getName()</h1>
+<h2>$student.getIsCompleted()</h2>
+
+#if($student.getCourses())
+  <p>Here are the courses for this student:</p>
+  <ul>
+    #foreach($course in $student.getCourses())
+      <li>$course.getCourseName()</li>
+    #end
+  </ul>
+#end
+
+<h4>Add a course to this student:</h4>
+
+<form action='/add_courses' method='post'>
+  <input id="student_id" name="student_id" type="hidden" value="$student.getId()">
+  <label for="course_id">Select a course</label>
+  <select id='course_id' name='course_id' type='text'>
+    #foreach($course in $allCourses)
+      <option value="$course.getId()"> $course.getCourseName() </option>
+    #end
+  </select>
+  <button type="submit" class="btn btn-info">Add course to this student</button>
+</form>
+
+<form action="/students/$student.getId()/edit" method="post">
+  <label for="studentName">Student Name</label>
+  <input id="studentName" name="studentName" type="text">
+  <button type="submit" class="btn btn-info" id="update-student">Update Student</button>
+</form>
+
+<form action="/students/$student.getId()/delete" method="post">
+  <button type="submit" class="btn btn-danger" id="delete-student">Delete Student</button>
+</form>
+
+<form action="/students/$student.getId()/complete" method="post">
+  <button type="submit" class="btn btn-danger" id="complete-student">complete Student</button>
+</form>
+
+<p><a href="/">Home</a></p>
